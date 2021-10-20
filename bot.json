@@ -1,0 +1,16 @@
+{
+    "delete_id": {
+        "file_id": 0
+    },
+    "files_delete": {
+
+    },
+    "status": {
+        "files_up": 0,
+        "files_size": 0,
+        "errors": 0
+    },
+    "files_shares": {
+
+    }
+}

@@ -1,0 +1,11 @@
+pyrogram==1.2.9
+requests==2.26.0
+TgCrypto==1.2.2
+aiohttp==3.7.4.post0
+beautifulsoup4==4.9.3
+fake-useragent==0.1.11
+lxml==4.4.2
+pycryptodome==3.10.1
+nextcloud-api-wrapper==0.2.1.5
+tqdm==4.61.2
+html5lib==1.1
