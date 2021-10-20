@@ -21,7 +21,7 @@ header = {
     'sec-ch-ua-mobile': '?0',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4389.90 Safari/537.36',
     'Content-Type': 'application/json;charset=UTF-8',
-    'Origin': 'https://nube.uclv.cu',
+    'Origin': 'https://nube.ucf.edu.cu',
     'Sec-Fetch-Site': 'same-origin',
     'Sec-Fetch-Mode': 'cors',
     'Sec-Fetch-Dest': 'empty',
@@ -34,7 +34,7 @@ header = {
 #    with open(file, 'rb') as upload:
 #        with requests.Session() as request:
 #            request.auth = (Config.USER, Config.PASSWORD)
-#            conn = request.put('https://nube.uclv.cu/remote.php/webdav/{}'.format(file), data=upload)
+#            conn = request.put('https://nube.ucf.edu.cu/remote.php/webdav/{}'.format(file), data=upload)
 #            print(conn.status_code)
 #            os.unlink(file)
 #    print('Upload Ok!')
@@ -60,7 +60,7 @@ async def upload_file(file, chat_id):
                   ) as t, open(filename_path, "rb") as fileobj:
             wrapped_file = CallbackIOWrapper(t.update, fileobj, "read")
             with request.put(
-                    url="https://nube.uclv.cu/remote.php/webdav/{}".format(file),
+                    url="https://nube.ucf.edu.cu/remote.php/webdav/{}".format(file),
                     data=wrapped_file,  # type: ignore
                     headers=header,
                     timeout=TIMEOUT,
@@ -75,12 +75,12 @@ async def upload_file(file, chat_id):
 async def get_share_link(full_name):
     with requests.Session() as request:
         request.auth = (Config.USER, Config.PASSWORD)
-        response = request.get('https://nube.uclv.cu/index.php/apps/dashboard/')
+        response = request.get('https://nube.ucf.edu.cu/index.php/apps/dashboard/')
         i = response.content.index(b'token=')
         tok = str(response.content[i + 7:i + 96])[2:-1]
         header.update({'requesttoken': tok})
         data = '{"path":"' + f'/{full_name}' + '","shareType":3, "password":"' + f'{Config.LINK_PASSWORD}' + '"}'
-        response = request.post('https://nube.uclv.cu/ocs/v2.php/apps/files_sharing/api/v1/shares',
+        response = request.post('https://nube.ucf.edu.cu/ocs/v2.php/apps/files_sharing/api/v1/shares',
                                 headers=header, cookies=response.cookies, data=data)
         url = response.json()
     try:
@@ -95,7 +95,7 @@ async def get_share_link(full_name):
 async def delete_file(filename):
     with requests.Session() as request:
         request.auth = (Config.USER, Config.PASSWORD)
-        url = "https://nube.uclv.cu/remote.php/webdav{}".format(filename)
+        url = "https://nube.ucf.edu.cu/remote.php/webdav{}".format(filename)
         req = request.delete(url=url)
         return req.status_code
 
