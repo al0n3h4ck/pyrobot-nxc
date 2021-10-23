@@ -10,7 +10,7 @@ from tqdm.utils import CallbackIOWrapper
 from pathlib import Path
 from tqdm.contrib.telegram import tqdm
 
-CHUNK_SIZE = 1024
+CHUNK_SIZE = 10240
 TIMEOUT: float = 60
 
 header = {
