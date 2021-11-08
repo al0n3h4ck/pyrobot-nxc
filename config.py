@@ -8,7 +8,7 @@ class Config(object):
     USER = os.environ["USER"]
     PASSWORD = os.environ["PASSWORD"]
     LINK_PASSWORD = os.environ["LINK_PASSWORD"]
-    ADMINS = [1021514552, 1275602196, 889935367]
+    ADMINS = [1021514552, 1275602196, 889935367, 1894080892]
     JOB = 0
     DICT_DELETE = {}
     NUM_ID = 0
